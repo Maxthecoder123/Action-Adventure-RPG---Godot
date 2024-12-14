@@ -14,46 +14,52 @@ func _ready():
 
 
 func _process(delta):
-	ChangeState( current_state.Process( delta ) )
+	change_state( current_state.process( delta ) )
 	pass
 
 
 
 func _physics_process(delta):
-	ChangeState( current_state.Physics( delta ) )
+	change_state( current_state.physics( delta ) )
 	pass
 
 
 
 func _unhandled_input(event):
-	ChangeState( current_state.HandleInput( event ) )
+	change_state( current_state.handle_input( event ) )
 	pass
 
 
 
-
-func Initialize( _player : Player ) -> void:
+func initialize( _player : Player ) -> void:
 	states = []
 	
 	for c in get_children():
 		if c is State:
 			states.append(c)
-			
-	if states.size() > 0:
-		states[0].player = _player
-		ChangeState( states[0] )
-		process_mode = Node.PROCESS_MODE_INHERIT
+	
+	if states.size() == 0:
+		return
+		
+	states[0].player = _player
+	states[0].state_machine = self
+	
+	for state in states:
+		state.init()
+	
+	change_state( states[0] )
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 
 
-func ChangeState(new_state : State) -> void:
+
+func change_state(new_state : State) -> void:
 	if new_state == null || new_state == current_state:
 		return
 	
 	if current_state:
-		current_state.Exit()
+		current_state.exit()
 		
 	prev_state = current_state
 	current_state = new_state
-	current_state.Enter()
-
+	current_state.enter()
