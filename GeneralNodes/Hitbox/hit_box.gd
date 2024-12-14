@@ -1,6 +1,6 @@
-class_name HitBox extends Area2D
+class_name Hitbox extends Area2D
 
-signal Damaged(damage : int)
+signal damaged(damage : int)
 
 
 func _ready():
@@ -14,5 +14,4 @@ func _process(_delta):
 
 
 func TakeDamage(damage : int) -> void:
-	print("TakeDamage: ",damage)
-	Damaged.emit(damage)
+	damaged.emit(damage)
