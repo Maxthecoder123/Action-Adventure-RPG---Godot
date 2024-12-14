@@ -6,7 +6,7 @@ class_name State_Idle extends State
 
 ## What happens when the player enters this State?
 func Enter() -> void:
-	player.UpdateAnimation("idle")
+	player.update_animation("idle")
 	pass
 	
 
