@@ -3,11 +3,10 @@ class_name Plant extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HitBox.damaged.connect(TakeDamage)
+	$HitBox.damaged.connect(take_damage)
 	pass # Replace with function body.
 
 
-func TakeDamage(_damage:int) -> void:
+func take_damage(_damage) -> void:
 	queue_free()
 	pass
-
