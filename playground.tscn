@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3tsge8votgck"]
+[gd_scene load_steps=6 format=3 uid="uid://b3tsge8votgck"]
 
-[ext_resource type="PackedScene" uid="uid://bl6nocmvemybx" path="res://Player/player.tscn" id="1_4slym"]
+[ext_resource type="Script" path="res://Levels/scripts/level.gd" id="1_8bdk5"]
 [ext_resource type="PackedScene" uid="uid://csbrusahcm0pj" path="res://Tile Maps/grass-01.tscn" id="2_dwmkh"]
 [ext_resource type="PackedScene" uid="uid://r0wediu4qbos" path="res://Props/Plants/plant.tscn" id="3_no0gj"]
+[ext_resource type="PackedScene" uid="uid://dchijydx217va" path="res://Levels/player_spawn.tscn" id="4_ml75u"]
 [ext_resource type="PackedScene" uid="uid://cxrwm7demy0m2" path="res://Enemies/Slime/Slime.tscn" id="4_u2062"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Player" parent="." instance=ExtResource("1_4slym")]
-position = Vector2(353, 92)
+script = ExtResource("1_8bdk5")
 
 [node name="Grass-01" parent="." instance=ExtResource("2_dwmkh")]
 
@@ -27,3 +26,6 @@ position = Vector2(466, 70)
 
 [node name="Slime" parent="." instance=ExtResource("4_u2062")]
 position = Vector2(353, -49)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_ml75u")]
+position = Vector2(317, 104)
