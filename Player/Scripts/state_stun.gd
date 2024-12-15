@@ -18,13 +18,13 @@ func init() -> void:
 
 ## What happens when the player enters this State?
 func enter() -> void:
-	player.update_animation("stun")
 	player.animation_player.animation_finished.connect(_animation_finished)
 	
 	direction = player.global_position.direction_to(hurt_box.global_position)
 	player.velocity = direction * -knockback_speed
 	player.set_direction()
 	
+	player.update_animation("stun")
 	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
 	pass

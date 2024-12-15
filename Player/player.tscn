@@ -589,7 +589,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(240, 136)
+position = Vector2(-1, 2)
 collision_mask = 16
 motion_mode = 1
 wall_min_slide_angle = 0.174533
@@ -599,7 +599,7 @@ script = ExtResource("1_ayc7e")
 shape = SubResource("CircleShape2D_4rqe4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -20)
+position = Vector2(0, -20)
 texture = ExtResource("2_abruo")
 hframes = 16
 vframes = 3

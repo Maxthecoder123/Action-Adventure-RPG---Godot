@@ -3,7 +3,7 @@ class_name PlayerCamera extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LevelManager.TileMapBoundsChanged.connect(UpdateLimits)
+	LevelManager.tilemap_bounds_changed.connect(UpdateLimits)
 	UpdateLimits(LevelManager.current_tilemap_bounds)
 	pass # Replace with function body.
 
