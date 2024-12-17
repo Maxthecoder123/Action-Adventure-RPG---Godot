@@ -13,52 +13,52 @@ var next_state : State = null
 
 
 func init() -> void:
-	player.player_damaged.connect(_player_damaged)
+	player.player_damaged.connect( _player_damaged )
 
 
 ## What happens when the player enters this State?
 func enter() -> void:
-	player.animation_player.animation_finished.connect(_animation_finished)
+	player.animation_player.animation_finished.connect( _animation_finished )
 	
-	direction = player.global_position.direction_to(hurt_box.global_position)
+	direction = player.global_position.direction_to( hurt_box.global_position )
 	player.velocity = direction * -knockback_speed
 	player.set_direction()
 	
 	player.update_animation("stun")
-	player.make_invulnerable(invulnerable_duration)
+	player.make_invulnerable( invulnerable_duration )
 	player.effect_animation_player.play("damaged")
 	pass
-	
+
 
 ## What happens when the player exits this State?
 func exit() -> void:
 	next_state = null
-	player.animation_player.animation_finished.disconnect(_animation_finished)
+	player.animation_player.animation_finished.disconnect( _animation_finished )
 	pass
-	
 
-## What happens during the process in this State?
-func process(_delta : float) -> State:
+
+## What happens during the _process update in this State?
+func process( _delta : float ) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
 	return next_state
-	
 
-## What happens during the physics process in this State?
-func physics(_delta : float) -> State:
+
+## What happens during the _physics_process update in this State?
+func physics( _delta : float ) -> State:
 	return null
 
 
 ## What happens with input events in this State?
-func handle_input(_event : InputEvent) -> State:
+func handle_input( _event: InputEvent ) -> State:
 	return null
-	
-	
-func _player_damaged(_hurt_box : HurtBox) -> void:
+
+
+func _player_damaged( _hurt_box : HurtBox ) -> void:
 	hurt_box = _hurt_box
-	state_machine.change_state(self)
+	state_machine.change_state( self )
 	pass
 
 
-func _animation_finished(_a : String) -> void:
+func _animation_finished( _a: String ) -> void:
 	next_state = idle
-	
+

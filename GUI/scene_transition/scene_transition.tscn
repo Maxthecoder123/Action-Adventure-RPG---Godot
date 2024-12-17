@@ -1,23 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://y6nm6aodnd5k"]
+[gd_scene load_steps=7 format=3 uid="uid://b47s24sfnq6kp"]
 
-[ext_resource type="Script" path="res://GUI/scene_transition/scene_transition.gd" id="1_224ld"]
+[ext_resource type="Script" path="res://GUI/scene_transition/scene_transition.gd" id="1_d2ngd"]
 
-[sub_resource type="Animation" id="Animation_mgf12"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_eq68w"]
+[sub_resource type="Animation" id="Animation_15guv"]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -32,7 +17,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_jg13u"]
+[sub_resource type="Animation" id="Animation_jtssu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ogh1u"]
 resource_name = "fade_in"
 length = 0.2
 tracks/0/type = "value"
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_2dq5q"]
+[sub_resource type="Animation" id="Animation_d0ld3"]
 resource_name = "fade_out"
 length = 0.2
 tracks/0/type = "value"
@@ -64,17 +64,17 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jl81"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1xlh"]
 _data = {
-"RESET": SubResource("Animation_mgf12"),
-"default": SubResource("Animation_eq68w"),
-"fade_in": SubResource("Animation_jg13u"),
-"fade_out": SubResource("Animation_2dq5q")
+"RESET": SubResource("Animation_jtssu"),
+"default": SubResource("Animation_15guv"),
+"fade_in": SubResource("Animation_ogh1u"),
+"fade_out": SubResource("Animation_d0ld3")
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_224ld")
+script = ExtResource("1_d2ngd")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -95,5 +95,6 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 libraries = {
-"": SubResource("AnimationLibrary_5jl81")
+"": SubResource("AnimationLibrary_c1xlh")
 }
+autoplay = "default"
